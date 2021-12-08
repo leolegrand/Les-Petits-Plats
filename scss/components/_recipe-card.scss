@@ -1,0 +1,55 @@
+.recipe-card {
+  width: 380px;
+  height: 364px;
+  background-color: #e7e7e7;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  border-radius: 5px;
+
+  overflow: hidden;
+
+  &__img {
+    height: 178px;
+    background-color: #c7bebe;
+  }
+  &__ingredients-list {
+    width: 50%;
+  }
+  &__ingredient {
+    line-height: 14px;
+    font-weight: 400;
+    font-size: 12px;
+    font-family: 'Lato';
+  }
+  .ingredient {
+    font-weight: 700;
+  }
+  &__instructions {
+    width: 50%;
+    font-size: 12px;
+  }
+  &__duration {
+    font-family: 'Lato';
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    & img {
+      margin-right: 5px;
+    }
+  }
+  &__body {
+    &-header {
+      font-size: 18px;
+      margin: 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    &-content {
+      margin: 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+}

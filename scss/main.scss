@@ -1,0 +1,12 @@
+@import './base/reset';
+@import './base/typography';
+
+@import './layout/main.container';
+@import './layout/header';
+@import './layout/main-nav';
+@import './layout/recipes-container';
+
+@import './components/main-header';
+@import './components/main-nav__input';
+@import './components/details-button';
+@import './components/recipe-card';

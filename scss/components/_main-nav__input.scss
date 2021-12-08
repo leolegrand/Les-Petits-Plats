@@ -1,0 +1,29 @@
+.main-nav__search {
+  margin-bottom: 1rem;
+  width: 100%;
+  background-color: hsl(0, 0%, 91%);
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  padding: 1rem;
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    color: #000000;
+    opacity: 0.25;
+  }
+  &-container {
+    position: relative;
+    & img {
+      position: absolute;
+      top: 11px;
+      right: 10px;
+    }
+  }
+}
+
+.main-nav__advanced-search {
+  display: flex;
+}

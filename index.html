@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS -->
+    <link href="./css/main.css" rel="stylesheet" />
+    <!-- Fonts DM Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Fonts Lato -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Les petits plats</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="main-header">
+        <img src="./img/logo.svg" alt="Logo de Les petits plats" /
+        class="main-header__logo">
+        <h1 class="main-header__title">Les petits plats</h1>
+      </div>
+
+      <nav class="main-nav">
+        <div class="main-nav__search-container">
+          <input
+            onkeyup="filterByFieldValue(this)"
+            id="main-search"
+            type="text"
+            name="Rechercher"
+            placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"
+            aria-label="Rechercher un ingrédient, appareil, ustensiles ou une recette"
+            class="main-nav__search"
+          />
+          <span
+            ><img
+              src="./img/icons/search-glass.png"
+              alt="magnifying glass icon"
+            />
+          </span>
+        </div>
+
+        <div class="main-nav__advanced-search">
+          <details class="details-button details-button--blue">
+            <summary>
+              <div class="details-button__title">
+                Ingredients<img src="./img/icons/detail-arrow.svg" alt="icon" />
+              </div>
+            </summary>
+            <input type="text" placeholder="Recherche un ingrédient" />
+            <ul>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+            </ul>
+          </details>
+          <details class="details-button details-button--green">
+            <summary>
+              <div class="details-button__title">
+                Appareil<img src="./img/icons/detail-arrow.svg" alt="icon" />
+              </div>
+            </summary>
+            <input type="text" placeholder="Recherche un appareil" />
+            <ul>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+            </ul>
+          </details>
+          <details class="details-button details-button--orange">
+            <summary>
+              <div class="details-button__title">
+                Ustensiles<img src="./img/icons/detail-arrow.svg" alt="icon" />
+              </div>
+            </summary>
+            <input type="text" placeholder="Recherche un ustensile" />
+            <ul>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+            </ul>
+          </details>
+        </div>
+      </nav>
+
+      <section class="recipes-container" id="recipes-container"></section>
+    </div>
+    <script src="./js/recipes.js"></script>
+    <script src="./js/templates/recipeCard.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
