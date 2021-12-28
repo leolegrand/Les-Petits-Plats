@@ -32,11 +32,9 @@
         class="main-header__logo">
         <h1 class="main-header__title">Les petits plats</h1>
       </div>
-
       <nav class="main-nav">
         <div class="main-nav__search-container">
           <input
-            onkeyup="filterByFieldValue(this)"
             id="main-search"
             type="text"
             name="Rechercher"
@@ -51,53 +49,22 @@
             />
           </span>
         </div>
-
+        <ul id="search-tags-list" class="search-tags"></ul>
         <div class="main-nav__advanced-search">
-          <details class="details-button details-button--blue">
-            <summary>
-              <div class="details-button__title">
-                Ingredients<img src="./img/icons/detail-arrow.svg" alt="icon" />
-              </div>
-            </summary>
-            <input type="text" placeholder="Recherche un ingrédient" />
-            <ul>
-              <li>1</li>
-              <li>2</li>
-              <li>3</li>
-              <li>4</li>
-              <li>5</li>
-            </ul>
-          </details>
-          <details class="details-button details-button--green">
-            <summary>
-              <div class="details-button__title">
-                Appareil<img src="./img/icons/detail-arrow.svg" alt="icon" />
-              </div>
-            </summary>
-            <input type="text" placeholder="Recherche un appareil" />
-            <ul>
-              <li>1</li>
-              <li>2</li>
-              <li>3</li>
-              <li>4</li>
-              <li>5</li>
-            </ul>
-          </details>
-          <details class="details-button details-button--orange">
-            <summary>
-              <div class="details-button__title">
-                Ustensiles<img src="./img/icons/detail-arrow.svg" alt="icon" />
-              </div>
-            </summary>
-            <input type="text" placeholder="Recherche un ustensile" />
-            <ul>
-              <li>1</li>
-              <li>2</li>
-              <li>3</li>
-              <li>4</li>
-              <li>5</li>
-            </ul>
-          </details>
+          <div
+            class="filtering-btn filtering-btn--blue"
+            id="filtering-ingredients"
+          ></div>
+
+          <div
+            class="filtering-btn filtering-btn--green"
+            id="filtering-appareils"
+          ></div>
+
+          <div
+            class="filtering-btn filtering-btn--orange"
+            id="filtering-ustensiles"
+          ></div>
         </div>
       </nav>
 
@@ -106,5 +73,10 @@
     <script src="./js/recipes.js"></script>
     <script src="./js/templates/recipeCard.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/filter/mainSearch.js"></script>
+    <script src="./js/templates/ingredientsBtn.js"></script>
+    <script src="./js/templates/ustensilsBtn.js"></script>
+    <script src="./js/templates/appliancesBtn.js"></script>
+    <script src="./js/filter/advancedFilter.js"></script>
   </body>
 </html>

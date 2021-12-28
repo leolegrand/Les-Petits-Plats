@@ -1,3 +1,5 @@
+@import './utils/keyframes';
+
 @import './base/reset';
 @import './base/typography';
 
@@ -8,5 +10,5 @@
 
 @import './components/main-header';
 @import './components/main-nav__input';
-@import './components/details-button';
+@import './components/filtering-btn';
 @import './components/recipe-card';

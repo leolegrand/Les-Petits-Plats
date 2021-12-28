@@ -1,38 +1,55 @@
+let recipesDisplayed
+let recipesFiltered
+
 const recipesContainer = document.getElementById('recipes-container')
 
-const everyIngredients = recipes.flatMap((r) =>
-  r.ingredients.map((i) => i.ingredient)
-)
-const everyUstensils = recipes.flatMap((r) => r.ustensils)
-const everyAppliance = recipes.map((r) => r.appliance)
-
 // recipes displayed by default
-recipes.forEach((recipe) => {
-  createNewRecipeCard(recipe)
-})
-
-// function called onKeyUp after each input in the main search
-function filterByFieldValue(field) {
-  const userInput = field.value
-  const recipesFromMainSearch = recipes.filter((r) =>
-    r.name.toUpperCase().includes(userInput.toUpperCase())
-  )
-  // ) &&
-  // recipes.filter((r) =>
-  //   r.description.toUpperCase().includes(userInput.toUpperCase())
-  // )
-  // &&
-  // recipes.filter((r) =>
-  //   r.ingredients.map((i) =>
-  //     i.ingredient.toUpperCase().includes(userInput.toUpperCase())
-  //   )
-  // )
-  console.clear()
-  console.log(recipesFromMainSearch)
-
-  recipesContainer.innerHTML = ''
-  recipesFromMainSearch.forEach((recipe) => {
-    console.log(recipe)
+function defaultRecipesDisplay() {
+  recipes.forEach((recipe) => {
     createNewRecipeCard(recipe)
   })
 }
+
+function getThings(arrOfRecipes) {
+  let everyIngredients = arrOfRecipes.flatMap((r) =>
+    r.ingredients.map((i) => i.ingredient)
+  )
+  let everyUstensils = arrOfRecipes.flatMap((r) => r.ustensils)
+  let everyAppliances = arrOfRecipes.map((r) => r.appliance)
+
+  everyIngredients = [...new Set(everyIngredients)]
+  everyAppliances = [...new Set(everyAppliances)]
+  everyUstensils = [...new Set(everyUstensils)]
+
+  return { everyAppliances, everyUstensils, everyIngredients }
+}
+
+function checkIfArrayIsEmpty(arr) {
+  let noResults = document.createElement('p')
+  noResults.innerHTML = `<p>  Aucune recette ne correspond à votre critère… vous pouvez
+  chercher « tarte aux pommes », « poisson », etc.
+   </p>`
+  if (arr.length == 0) {
+    recipesContainer.appendChild(noResults)
+  } else {
+    if (noResults === true) {
+      recipesContainer.removeChild(noResults)
+    }
+  }
+}
+
+const { everyIngredients, everyAppliances, everyUstensils } = getThings(recipes)
+
+defaultRecipesDisplay()
+recipesDisplayed = recipes
+checkIfArrayIsEmpty(recipesDisplayed)
+
+// fonction refresh list
+
+// supprimer les tags
+
+// créer l'autre algo
+
+// faire l'algorigramme
+
+// comparer les 2 algos
