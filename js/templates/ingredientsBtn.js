@@ -19,6 +19,7 @@ function createIngredientBtnClosed() {
 // Drop-down a research input and a list of INGREDIENTS
 // On click: Close the container and display a closed button
 function createIngredientBtnOpen() {
+  const { everyIngredients } = getThings(recipesToPickFrom)
   const ingredientsBtnOpen = document.createElement('div')
   ingredientsBtnOpen.classList.add('filtering-btn__open')
   ingredientsBtnOpen.innerHTML = `<div class="filtering-btn__search">
@@ -32,7 +33,7 @@ function createIngredientBtnOpen() {
 
   everyIngredients.forEach((ingredient) => {
     if (everyIngredients.indexOf(ingredient) < 30) {
-      ingredientsList.innerHTML += `<li onclick="ingredientFilter(this)">${ingredient}`
+      ingredientsList.innerHTML += `<li onclick="createNewTag(this, 'ingredient')">${ingredient}`
     }
   })
 
@@ -43,7 +44,7 @@ function createIngredientBtnOpen() {
     ingredientsList.innerHTML = ``
     match.forEach((i) => {
       if (match.indexOf(i) < 30) {
-        ingredientsList.innerHTML += `<li onclick="ingredientFilter(this)">${i}`
+        ingredientsList.innerHTML += `<li onclick="createNewTag(this, 'ingredient')">${i}`
       }
     })
   })

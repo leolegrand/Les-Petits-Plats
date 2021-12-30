@@ -19,6 +19,7 @@ function createAppareilsBtnClosed() {
 // Drop-down a research input and a list of APPLIANCES
 // On click: Close the container and display a closed button
 function createAppareilsBtnOpen() {
+  const { everyAppliances } = getThings(recipesToPickFrom)
   const appareilsBtnOpen = document.createElement('div')
   appareilsBtnOpen.classList.add('filtering-btn__open')
   appareilsBtnOpen.innerHTML = `<div class="filtering-btn__search">
@@ -30,7 +31,7 @@ function createAppareilsBtnOpen() {
   const appareilsList = document.getElementById('appareils-list')
   everyAppliances.forEach((appliance) => {
     if (everyAppliances.indexOf(appliance) < 30) {
-      appareilsList.innerHTML += `<li id="appliance-${appliance}" onclick="applianceFilter(this)">${appliance}</li>`
+      appareilsList.innerHTML += `<li id="appliance-${appliance}" onclick="createNewTag(this, 'appliance')">${appliance}</li>`
     }
   })
 
@@ -42,7 +43,7 @@ function createAppareilsBtnOpen() {
     appareilsList.innerHTML = ``
     match.forEach((i) => {
       if (match.indexOf(i) < 30) {
-        appareilsList.innerHTML += `<li onclick="applianceFilter(this)">${i}`
+        appareilsList.innerHTML += `<li onclick="createNewTag(this, 'appliance')">${i}`
       }
     })
   })

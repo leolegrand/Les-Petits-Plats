@@ -1,55 +1,30 @@
+// DOM
 let recipesDisplayed
 let recipesFiltered
-
+let recipesToPickFrom
 const recipesContainer = document.getElementById('recipes-container')
+const mainSearch = document.getElementById('main-search')
 
-// recipes displayed by default
+// get all recipes from data and create a new recipe card with each one.
 function defaultRecipesDisplay() {
   recipes.forEach((recipe) => {
     createNewRecipeCard(recipe)
+    recipesToPickFrom = recipes
   })
 }
-
-function getThings(arrOfRecipes) {
-  let everyIngredients = arrOfRecipes.flatMap((r) =>
-    r.ingredients.map((i) => i.ingredient)
-  )
-  let everyUstensils = arrOfRecipes.flatMap((r) => r.ustensils)
-  let everyAppliances = arrOfRecipes.map((r) => r.appliance)
-
-  everyIngredients = [...new Set(everyIngredients)]
-  everyAppliances = [...new Set(everyAppliances)]
-  everyUstensils = [...new Set(everyUstensils)]
-
-  return { everyAppliances, everyUstensils, everyIngredients }
-}
-
-function checkIfArrayIsEmpty(arr) {
-  let noResults = document.createElement('p')
-  noResults.innerHTML = `<p>  Aucune recette ne correspond à votre critère… vous pouvez
-  chercher « tarte aux pommes », « poisson », etc.
-   </p>`
-  if (arr.length == 0) {
-    recipesContainer.appendChild(noResults)
-  } else {
-    if (noResults === true) {
-      recipesContainer.removeChild(noResults)
-    }
-  }
-}
-
-const { everyIngredients, everyAppliances, everyUstensils } = getThings(recipes)
 
 defaultRecipesDisplay()
 recipesDisplayed = recipes
 checkIfArrayIsEmpty(recipesDisplayed)
 
-// fonction refresh list
-
-// supprimer les tags
-
-// créer l'autre algo
-
-// faire l'algorigramme
-
-// comparer les 2 algos
+mainSearch.addEventListener('keyup', () => {
+  if (tagsList.childElementCount === 0) {
+    filterByFieldValue(mainSearch.value, recipes)
+  } else {
+    filterByFieldValue(mainSearch.value, filteredRecipes)
+    // pb ici?
+    tagsList.childNodes.forEach((tag) => {
+      filterByTags(tag)
+    })
+  }
+})

@@ -19,6 +19,7 @@ function createUstensilsBtnClosed() {
 // Drop-down a research input and a list of USTENSILS
 // On click: Close the container and display a closed button
 function createUstensilsBtnOpen() {
+  const { everyUstensils } = getThings(recipesToPickFrom)
   const ustensilsBtnOpen = document.createElement('div')
   ustensilsBtnOpen.classList.add('filtering-btn__open')
   ustensilsBtnOpen.innerHTML = `<div class="filtering-btn__search">
@@ -30,7 +31,7 @@ function createUstensilsBtnOpen() {
   const ustensilsList = document.getElementById('ustensils-list')
   everyUstensils.forEach((ustensile) => {
     if (everyUstensils.indexOf(ustensile) < 30) {
-      ustensilsList.innerHTML += `<li id="ustensile-${ustensile}" onclick="ustensilsFilter(this)">${ustensile}`
+      ustensilsList.innerHTML += `<li id="ustensile-${ustensile}" onclick="createNewTag(this, 'ustensil')">${ustensile}`
     }
   })
 
@@ -43,7 +44,7 @@ function createUstensilsBtnOpen() {
     ustensilsList.innerHTML = ``
     match.forEach((i) => {
       if (match.indexOf(i) < 30) {
-        ustensilsList.innerHTML += `<li onclick="ustensilsFilter(this)">${i}`
+        ustensilsList.innerHTML += `<li onclick="createNewTag(this, 'ustensil')">${i}`
       }
     })
   })

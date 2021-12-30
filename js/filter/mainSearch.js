@@ -1,7 +1,8 @@
-const mainSearch = document.getElementById('main-search')
+const tagsList = document.getElementById('search-tags-list')
 // function called onKeyUp after each input in the main search
 
 function filterByFieldValue(userInput, arrOfRecipes) {
+  closeAdvancedFilters()
   const matchingDescriptions = arrOfRecipes.filter((r) =>
     r.description.toLowerCase().includes(userInput.toLowerCase())
   )
@@ -28,23 +29,25 @@ function filterByFieldValue(userInput, arrOfRecipes) {
 
   const recipesFromMainSearch = [...new Set(everyMatchingResults)]
 
-  if (mainSearch.value.length > 3) {
+  if (mainSearch.value.length >= 3) {
     recipesContainer.innerHTML = ''
     recipesFromMainSearch.forEach((recipe) => {
       createNewRecipeCard(recipe)
     })
     recipesDisplayed = recipesFromMainSearch
-    // const { everyUstensils } = getThings(recipesDisplayed)
-  } else {
+    recipesToPickFrom = recipesFromMainSearch
+  } else if (mainSearch.value.length < 3 && filteredRecipes === undefined) {
     recipesContainer.innerHTML = ``
     defaultRecipesDisplay()
     recipesDisplayed = recipes
+    recipesToPickFrom = recipes
+  } else if (mainSearch.value.length < 3 && filteredRecipes != undefined) {
+    recipesContainer.innerHTML = ``
+    filteredRecipes.forEach((recipe) => {
+      createNewRecipeCard(recipe)
+    })
+    recipesDisplayed = recipes
+    recipesToPickFrom = recipes
   }
-
   checkIfArrayIsEmpty(recipesFromMainSearch)
 }
-
-mainSearch.addEventListener('keyup', () => {
-  filterByFieldValue(mainSearch.value, recipesDisplayed)
-  // const { everyUstensils } = getThings(recipesDisplayed)
-})

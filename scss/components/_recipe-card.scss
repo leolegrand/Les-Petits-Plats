@@ -25,6 +25,7 @@
     font-weight: 700;
   }
   &__instructions {
+    margin-left: 0.5rem;
     width: 50%;
     font-size: 12px;
     line-height: 12px;
@@ -33,6 +34,7 @@
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
   }
   &__duration {
     font-family: 'Lato';

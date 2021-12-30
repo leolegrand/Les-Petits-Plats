@@ -22,14 +22,16 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap"
       rel="stylesheet"
     />
-
+    <link rel="icon" href="./img/logo.svg" />
     <title>Les petits plats</title>
   </head>
   <body>
     <div class="main-container">
       <div class="main-header">
-        <img src="./img/logo.svg" alt="Logo de Les petits plats" /
-        class="main-header__logo">
+        <a href="index.html"
+          ><img src="./img/logo.svg" alt="Logo de Les petits plats" /
+          class="main-header__logo"></a
+        >
         <h1 class="main-header__title">Les petits plats</h1>
       </div>
       <nav class="main-nav">
@@ -50,7 +52,7 @@
           </span>
         </div>
         <ul id="search-tags-list" class="search-tags"></ul>
-        <div class="main-nav__advanced-search">
+        <div class="main-nav__advanced-search" id="advanced-filters-container">
           <div
             class="filtering-btn filtering-btn--blue"
             id="filtering-ingredients"
@@ -70,13 +72,24 @@
 
       <section class="recipes-container" id="recipes-container"></section>
     </div>
-    <script src="./js/recipes.js"></script>
+
+    <!-- JAVASCRIPT LINKS -->
+
+    <!-- Data -->
+    <script src="./js/data/recipes.js"></script>
+    <!-- // Templates -->
     <script src="./js/templates/recipeCard.js"></script>
-    <script src="./js/index.js"></script>
-    <script src="./js/filter/mainSearch.js"></script>
     <script src="./js/templates/ingredientsBtn.js"></script>
     <script src="./js/templates/ustensilsBtn.js"></script>
     <script src="./js/templates/appliancesBtn.js"></script>
-    <script src="./js/filter/advancedFilter.js"></script>
+    <!-- Utils -->
+    <script src="./js/utils/getThings.js"></script>
+    <script src="./js/utils/noResults.js"></script>
+    <script src="./js/utils/closeAdvancedFilters.js"></script>
+    <!-- Init -->
+    <script src="./js/index.js"></script>
+    <!-- Filters -->
+    <script src="./js/filter/mainSearch.js"></script>
+    <script src="./js/filter/filterByTags.js"></script>
   </body>
 </html>
