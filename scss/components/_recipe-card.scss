@@ -5,9 +5,11 @@
   margin-top: 1rem;
   margin-right: 1rem;
   border-radius: 5px;
-
   overflow: hidden;
 
+  &__title {
+    font-weight: 600;
+  }
   &__img {
     height: 178px;
     background-color: #c7bebe;
@@ -25,23 +27,26 @@
     font-weight: 700;
   }
   &__instructions {
-    margin-left: 0.5rem;
-    width: 50%;
-    font-size: 12px;
-    line-height: 12px;
-    max-height: 8 * 12px;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    margin-left: 1rem;
     display: -webkit-box;
+    max-width: 200px;
     -webkit-line-clamp: 8;
     -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 50%;
+    font-size: 12px;
+    max-height: 96px;
+    text-overflow: ellipsis;
   }
   &__duration {
     font-family: 'Lato';
     display: flex;
     align-items: center;
+    justify-content: center;
     font-weight: 700;
+    min-width: 80px;
     & img {
+      height: 15px;
       margin-right: 5px;
     }
   }
