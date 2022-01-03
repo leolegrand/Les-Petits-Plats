@@ -9,33 +9,27 @@ const tagsList = document.getElementById('search-tags-list')
 function filterByFieldValue(userInput, arrOfRecipes) {
   closeAdvancedFilters()
 
-  const matchingDescriptions = arrOfRecipes.filter((r) =>
-    r.description.toLowerCase().includes(userInput.toLowerCase())
-  )
+  let results = []
 
-  const matchingNames = arrOfRecipes.filter((r) =>
-    r.name.toLowerCase().includes(userInput.toLowerCase())
-  )
-
-  const matchingIngredients = arrOfRecipes
-    .map((r) => {
-      if (
-        r.ingredients.some((i) =>
-          i.ingredient.toLowerCase().includes(userInput.toLowerCase())
-        )
-      ) {
-        return r
+  for (const r of arrOfRecipes) {
+    // si le nom d'une recette match l'input
+    if (r.name.toLowerCase().includes(userInput.toLowerCase())) {
+      results.push(r)
+    }
+    // si un terme de la description match l'input
+    if (r.description.toLowerCase().includes(userInput.toLowerCase())) {
+      results.push(r)
+    }
+    for (const i of r.ingredients) {
+      // si l'un des ingredients contenus dans la liste des ingrédients match l'input
+      if (i.ingredient.toLowerCase().includes(userInput.toLowerCase())) {
+        results.push(r)
       }
-    })
-    .filter((r) => r)
+    }
+  }
 
-  // merge every matching results into the same array
-  const everyMatchingResults = matchingNames
-    .concat(matchingIngredients)
-    .concat(matchingDescriptions)
-
-  // remove duplicates
-  const recipesFromMainSearch = [...new Set(everyMatchingResults)]
+  // removes duplicates
+  const recipesFromMainSearch = [...new Set(results)]
 
   if (mainSearch.value.length >= 3) {
     // user entered at least 3 characters
