@@ -19,7 +19,7 @@ function createUstensilsBtnClosed() {
 // Drop-down a research input and a list of USTENSILS
 // On click: Close the container and display a closed button
 function createUstensilsBtnOpen() {
-  const { everyUstensils } = getThings(recipesToPickFrom)
+  const { everyUstensils } = getThings(recipesDisplayed)
   const ustensilsBtnOpen = document.createElement('div')
   ustensilsBtnOpen.classList.add('filtering-btn__open')
   ustensilsBtnOpen.innerHTML = `<div class="filtering-btn__search">

@@ -19,7 +19,7 @@ function createIngredientBtnClosed() {
 // Drop-down a research input and a list of INGREDIENTS
 // On click: Close the container and display a closed button
 function createIngredientBtnOpen() {
-  const { everyIngredients } = getThings(recipesToPickFrom)
+  const { everyIngredients } = getThings(recipesDisplayed)
   const ingredientsBtnOpen = document.createElement('div')
   ingredientsBtnOpen.classList.add('filtering-btn__open')
   ingredientsBtnOpen.innerHTML = `<div class="filtering-btn__search">

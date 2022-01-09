@@ -1,11 +1,9 @@
 // -- DOM -- //
 
 // contains recipes ----
-let recipesDisplayed
-// contains recipes sorted by tag
-let recipesFiltered
+let recipesFromInput
 // contains the displayed recipes
-let recipesToPickFrom
+let recipesDisplayed
 
 const recipesContainer = document.getElementById('recipes-container')
 const mainSearch = document.getElementById('main-search')
@@ -16,16 +14,16 @@ const mainSearch = document.getElementById('main-search')
 function defaultRecipesDisplay() {
   recipes.forEach((recipe) => {
     createNewRecipeCard(recipe)
-    recipesToPickFrom = recipes
+    recipesDisplayed = recipes
   })
 }
 
 // inject all recipes
 defaultRecipesDisplay()
-// since there is no input or tag, the value of recipesDisplayed contains all recipes
-recipesDisplayed = recipes
+// since there is no input or tag, the value of recipesFromInput contains all recipes
+recipesFromInput = recipes
 // PROBABLY UNNECESSARY
-//checkIfArrayIsEmpty(recipesDisplayed)
+//checkIfArrayIsEmpty(recipesFromInput)
 
 // listen to change inside the main search
 mainSearch.addEventListener('keyup', () => {
@@ -34,7 +32,7 @@ mainSearch.addEventListener('keyup', () => {
     filterByFieldValue(mainSearch.value, recipes)
   } else {
     // else, filter the recipes already filtered by tags
-    filterByFieldValue(mainSearch.value, filteredRecipes)
+    filterByFieldValue(mainSearch.value, recipesFromTags)
     tagsList.childNodes.forEach((tag) => {
       filterByTags(tag)
     })

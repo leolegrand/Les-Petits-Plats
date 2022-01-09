@@ -15,10 +15,12 @@ function filterByFieldValue(userInput, arrOfRecipes) {
     // si le nom d'une recette match l'input
     if (r.name.toLowerCase().includes(userInput.toLowerCase())) {
       results.push(r)
+      continue
     }
     // si un terme de la description match l'input
     if (r.description.toLowerCase().includes(userInput.toLowerCase())) {
       results.push(r)
+      continue
     }
     for (const i of r.ingredients) {
       // si l'un des ingredients contenus dans la liste des ingrédients match l'input
@@ -37,27 +39,27 @@ function filterByFieldValue(userInput, arrOfRecipes) {
     recipesFromMainSearch.forEach((recipe) => {
       createNewRecipeCard(recipe)
     })
+    recipesFromInput = recipesFromMainSearch
     recipesDisplayed = recipesFromMainSearch
-    recipesToPickFrom = recipesFromMainSearch
-  } else if (mainSearch.value.length < 3 && filteredRecipes === undefined) {
+  } else if (mainSearch.value.length < 3 && recipesFromTags === undefined) {
     // user entered less than 3 characters and the recipes are not filtered by tags
     recipesContainer.innerHTML = ``
     defaultRecipesDisplay()
+    recipesFromInput = recipes
     recipesDisplayed = recipes
-    recipesToPickFrom = recipes
-  } else if (mainSearch.value.length < 3 && filteredRecipes != undefined) {
+  } else if (mainSearch.value.length < 3 && recipesFromTags != undefined) {
     // user entered less than 3 characters and the array is filtered by at least one tag
     recipesContainer.innerHTML = ``
-    filteredRecipes.forEach((recipe) => {
+    recipesFromTags.forEach((recipe) => {
       createNewRecipeCard(recipe)
     })
+    recipesFromInput = recipes
     recipesDisplayed = recipes
-    recipesToPickFrom = recipes
   }
 
   // if there are no recipes that match any user input, displays an error message
   checkIfArrayIsEmpty(recipesFromMainSearch)
-  if (filteredRecipes != undefined) {
-    checkIfArrayIsEmpty(filteredRecipes)
+  if (recipesFromTags != undefined) {
+    checkIfArrayIsEmpty(recipesFromTags)
   }
 }

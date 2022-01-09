@@ -1,7 +1,7 @@
 // -- DOM --  /
 
 let filteredArray
-let filteredRecipes
+let recipesFromTags
 
 // -- TAGS -- //
 
@@ -43,8 +43,8 @@ function removeTag(tag) {
       //&& if there is an user input, filter all the recipes with this input
       filterByFieldValue(mainSearch.value, recipes)
     }
-    // since there is no tag filter anymore, reset the value of filteredRecipes
-    filteredRecipes = undefined
+    // since there is no tag filter anymore, reset the value of recipesFromTags
+    recipesFromTags = undefined
     closeAdvancedFilters()
   } else {
     // there is at least 1 tag left
@@ -72,10 +72,10 @@ function filterByTags(tag) {
   }
 
   if (tagsList.childElementCount === 1) {
-    // if there is only one tag, filter is applied to the recipesDisplayed array
+    // if there is only one tag, filter is applied to the recipesFromInput array
     switch (list) {
       case 'ingredient':
-        filteredArray = recipesDisplayed
+        filteredArray = recipesFromInput
           .map((r) => {
             if (
               r.ingredients.some((i) =>
@@ -89,13 +89,13 @@ function filterByTags(tag) {
         break
 
       case 'ustensil':
-        filteredArray = recipesDisplayed.filter((r) => {
+        filteredArray = recipesFromInput.filter((r) => {
           return r.ustensils.includes(tagContent)
         })
         break
 
       case 'appliance':
-        filteredArray = recipesDisplayed.filter((r) => {
+        filteredArray = recipesFromInput.filter((r) => {
           return r.appliance.toLowerCase().includes(tagContent.toLowerCase())
         })
         break
@@ -110,13 +110,13 @@ function filterByTags(tag) {
       createNewRecipeCard(recipe)
     })
     checkIfArrayIsEmpty(filteredArray)
-    filteredRecipes = filteredArray
-    recipesToPickFrom = filteredRecipes
+    recipesFromTags = filteredArray
+    recipesDisplayed = recipesFromTags
   } else {
     // since there is more than 1 tag, we filter the "already filtered by tag" array
     switch (list) {
       case 'ingredient':
-        filteredArray = filteredRecipes
+        filteredArray = recipesFromTags
           .map((r) => {
             if (
               r.ingredients.some((i) =>
@@ -130,13 +130,13 @@ function filterByTags(tag) {
         break
 
       case 'ustensil':
-        filteredArray = filteredRecipes.filter((r) => {
+        filteredArray = recipesFromTags.filter((r) => {
           return r.ustensils.includes(tagContent)
         })
         break
 
       case 'appliance':
-        filteredArray = filteredRecipes.filter((r) => {
+        filteredArray = recipesFromTags.filter((r) => {
           return r.appliance.toLowerCase().includes(tagContent.toLowerCase())
         })
         break
@@ -152,7 +152,7 @@ function filterByTags(tag) {
     })
 
     checkIfArrayIsEmpty(filteredArray)
-    filteredRecipes = filteredArray
-    recipesToPickFrom = filteredRecipes
+    recipesFromTags = filteredArray
+    recipesDisplayed = recipesFromTags
   }
 }

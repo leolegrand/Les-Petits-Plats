@@ -20,7 +20,7 @@ function createAppareilsBtnClosed() {
 // On click: Close the container and display a closed button
 function createAppareilsBtnOpen() {
   // comparer avec les tags déjà présent et filtré
-  const { everyAppliances } = getThings(recipesToPickFrom)
+  const { everyAppliances } = getThings(recipesDisplayed)
   const appareilsBtnOpen = document.createElement('div')
   appareilsBtnOpen.classList.add('filtering-btn__open')
   appareilsBtnOpen.innerHTML = `<div class="filtering-btn__search">
