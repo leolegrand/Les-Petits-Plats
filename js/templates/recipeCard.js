@@ -7,8 +7,10 @@ function createNewRecipeCard(r) {
   recipeCard.classList.add('recipe-card')
 
   // Img
-  const recipeCardImg = document.createElement('div')
+  const recipeCardImg = document.createElement('img')
   recipeCardImg.classList.add('recipe-card__img')
+  
+  recipeCardImg.src = `../../img/recipes/${r.image}`
   recipeCard.appendChild(recipeCardImg)
 
   // Body container

@@ -11,6 +11,8 @@
     font-weight: 600;
   }
   &__img {
+    width: 100%;
+    object-fit: cover;
     height: 178px;
     background-color: #c7bebe;
   }
